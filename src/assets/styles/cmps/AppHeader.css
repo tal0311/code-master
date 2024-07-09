@@ -1,0 +1,11 @@
+.app-header{
+    
+    .header-container{
+        align-items: center;
+        h1{
+            margin: 0;
+        }
+        
+    }
+
+}

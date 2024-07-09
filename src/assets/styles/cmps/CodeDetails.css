@@ -1,0 +1,57 @@
+/* Add custom styles for the editor container */
+.editor-container {
+    /* border: 1px solid #ccc; */
+    /* border-radius: 2px; */
+    overflow: hidden;
+  }
+
+  .editor-container > * {
+    outline: none;
+  }
+
+  .editor-controls {
+    gap: 0.5rem; 
+    button {
+      padding: 0.5rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f0f0f0;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      &:hover {
+        background-color: #e0e0e0;
+      }
+      &:active {
+        background-color: #e0e0e0;
+      }
+    }
+  }
+
+ 
+
+  .editor {
+    outline: none;
+    border-radius: 10px;
+    margin-bottom: 30px;
+
+    .monaco-editor {
+      
+        padding-top: 20px;
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 10px;
+
+        .overflow-guard {
+            width: 100% !important;
+            height: 100% !important;
+            border-radius: 10px;
+
+            &:first-child {
+                width: 100% !important;
+                height: 100% !important;
+            }
+        }
+    }
+}
+
+  

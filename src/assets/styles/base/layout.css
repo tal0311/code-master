@@ -1,0 +1,22 @@
+.main-layout {
+    display: grid;
+    grid-template-columns: minmax(20px, 1fr) minmax(0, 900px) minmax(20px, 1fr);
+ 
+
+    & > * {
+        grid-column: 2;
+    }
+
+    &.full{
+        grid-column: 1 / -1;
+    }
+}
+
+
+
+
+
+.app-container.main-layout{
+    grid-template-rows: 50px 1fr 150px;
+    height: 100vh;
+}

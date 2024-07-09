@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  /* outline: 1px solid lightgray; */
+}
+
+html {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+div.code {
+  white-space: pre;
+}
+
+.svg-icon {
+  width: min-content;
+  height: min-content;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

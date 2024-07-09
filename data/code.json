@@ -1,0 +1,32 @@
+[
+    {
+        "_id": "5f5b3e3b5f3f3b3b3b3b3b3b",
+        "code": "function getData() {\n    return fetch('https://jsonplaceholder.typicode.com/posts')\n    // complete the code\n}\ngetData();",
+        "language": "javascript",
+        "title": "Fetch API"
+    },
+    {
+        "_id": "5f5b3e3b5f3f3b3b3b3b3b3c",
+        "code": "console.log('Hello, World!');",
+        "language": "javascript",
+        "title": "Hello World1"
+    },
+    {
+        "_id": "5f5b3e3b5f3f3b3b3b3b3b3d",
+        "code": "console.log('Hello, Mold!');",
+        "language": "javascript",
+        "title": "Hello World2"
+    },
+    {
+        "_id": "5f5b3e3b5f3f3b3b3b3b3b3e",
+        "code": "console.log('Hello, Told!');",
+        "language": "javascript",
+        "title": "Hello World3"
+    },
+    {
+        "_id": "5f5b3e3b5f3f3b3b3b3b3b3f",
+        "code": "console.log(\"Hello, bold!\");",
+        "language": "javascript",
+        "title": "Hello World4"
+    }
+]
