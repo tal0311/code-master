@@ -1,0 +1,27 @@
+[
+    {
+        "_id": "5f5b3e3b5f3f3b3b3b3b3b3b",
+        "fname": "John",
+        "lname": "Doe",
+        "email": "example@gmail.com",
+        "password": "1",
+        "role": "mentor",
+        "favorites": [
+            "5f5b3e3b5f3f3b3b3b3b3b3b",
+            "5f5b3e3b5f3f3b3b3b3b3b3c"
+        ]
+    },
+    {
+        "_id": "5f5b3e3b5f3f3b3b3b3b3b3c",
+        "fname": "Jane",
+        "lname": "Smith",
+        "email": "jane@example.com",
+        "password": "2",
+        "role": "student",
+        "favorites": [
+            "5f5b3e3b5f3f3b3b3b3b3b3d",
+            "5f5b3e3b5f3f3b3b3b3b3b3e"
+        ]
+    }
+   
+]

@@ -5,7 +5,8 @@ import CodeIdx from './views/CodeIdx';
 import ErrorPage from './views/404';
 import CodeDetails from './views/CodeDetails';
 import AppLoader from './cmps/AppLoader';
-
+import Login from './views/Login';
+import  {userService} from './services/user.service';
 // services
 import { itemService } from './services/item.service.local';
 
@@ -16,6 +17,7 @@ function RouterView() {
                     <Route path="/" element={<RouteGuard route="home" />} />
                     <Route path="/code" element={<RouteGuard route="lobby" />} />
                     <Route path="/code/:codeId" element={<RouteGuard route="code-details" />} />
+                    <Route path="/login" element={<RouteGuard route="login" />} />
                </Routes>
           </>
      );
@@ -27,7 +29,7 @@ function RouteGuard({ route }) {
      const { loading, component } = useRouteGuard(route);
 
      return loading
-          ? <AppLoader />
+          ? <AppLoader display={'global'}/>
           : component;
 }
 
@@ -35,6 +37,12 @@ function useRouteGuard(route) {
      const { codeId } = useParams();
      const [loading, setLoading] = useState(true);
      const [component, setComponent] = useState(<ErrorPage />);
+     const user =userService.getLoggedInUser()
+
+     if (!user) {
+          route = 'login';
+     }
+
 
      useEffect(() => {
 
@@ -57,6 +65,10 @@ function useRouteGuard(route) {
                          // console.log(codeQuest);
                          cmp = <CodeDetails codeQuest={codeQuest} />;
                     }
+                    break;
+               
+               case 'login':
+                    cmp = <Login />;
                     break;
                default:
                     cmp = <ErrorPage />;
