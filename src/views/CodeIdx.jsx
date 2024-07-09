@@ -1,13 +1,17 @@
 
 import CodeList from "../cmps/CodeList";
+import { userService } from "../services/user.service";
 
 function CodeIdx({codes}) {
-  console.log(codes);
+
+  const user= userService.getLoggedInUser()
+
+  // console.log(codes);
   return (
     <section className="code-idx">
-      <h1>CodeIdx</h1>
+      <h1>Lobby</h1>
     
-      <CodeList codes={codes} />
+      <CodeList codes={codes} favorites={user.favorites} />
     </section>
   );
 }

@@ -1,10 +1,15 @@
 import CodePreview from './CodePreview';
+import SvgIcon from './SvgIcon';
 
-function CodeList({ codes }) {
-    console.log(codes);
+function CodeList({ codes, favorites }) {
+  console.log(favorites);
+  // console.log(codes);
   return (
     <ul className='code-list clean-list'>
-      {codes.map((code) => <CodePreview key={code._id} code={code} />)}
+      {codes.map((code) => {
+        const isFavorite = (favorites.includes(code._id))
+        return <CodePreview key={code._id} code={code} isFavorite={isFavorite} />;
+      })}
     </ul>
   );
 }
