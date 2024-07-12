@@ -9,6 +9,8 @@ import Login from './views/Login';
 import  {userService} from './services/user.service';
 // services
 import { itemService } from './services/item.service.local';
+import { socketService } from './services/socket.service';
+
 
 function RouterView() {
      return (
@@ -42,6 +44,11 @@ function useRouteGuard(route) {
      if (!user) {
           route = 'login';
      }
+     if (user){
+          console.log('user',user);
+          socketService.setup()
+     }
+
 
 
      useEffect(() => {

@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 
 function App() {
   useEffect(() => {
-    showSuccessMsg('Welcome to React Vite!')
+    showSuccessMsg('Welcome to Code_Master!')
   }, [])
 
   function openUserModal() {

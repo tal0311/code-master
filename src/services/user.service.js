@@ -1,6 +1,9 @@
 import gUsers from './../../data/user.json';
 import { storageService } from './async-storage.service.js';
+import { httpService } from './http.service.js';
 import { utilService } from './util.service';
+import{socketService} from './socket.service'
+
 const STORAGE_KEY = 'user_DB';
 const LOGGED_USER = 'loggedUser';
 
@@ -38,6 +41,7 @@ async function save(user) {
     if (updatedUser) {
         console.log('updatedUser', updatedUser);
         _saveLoggedUser(updatedUser);
+       
         return updatedUser;
 
     }
@@ -52,7 +56,15 @@ function removeUser(userId) {
 
 
 async function login(loginType, credentials) {
-    _saveLoggedUser(gUsers[0])
+    
+    try {
+        const user=await httpService.post('auth/login', {username:'user1', password:'1'})
+        console.log('user',user);
+        return _saveLoggedUser(user)
+    
+   } catch (error) {
+    
+   }
 
     // if (loginType === 'guest') {
     //     let guestUser = getGuestUser();
