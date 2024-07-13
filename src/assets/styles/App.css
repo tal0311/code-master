@@ -26,3 +26,8 @@ div.code {
   justify-content: center;
   cursor: pointer;
 }
+
+.icon{
+  all:unset
+}
+

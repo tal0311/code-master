@@ -1,0 +1,5 @@
+.app-footer{
+    display: grid;
+    align-items: end;
+    margin-block-end: 1rem;
+}

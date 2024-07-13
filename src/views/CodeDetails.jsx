@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
 import Editor, { useMonaco } from '@monaco-editor/react';
-import { itemService } from '../services/item.service.local';
 import AppLoader from '../cmps/AppLoader';
-import App from '../App';
+import { socketService } from '../services/socket.service';
+
 
 function CodeDetails({ codeQuest }) {
     const [quest, setQuest] = useState({ ...codeQuest });

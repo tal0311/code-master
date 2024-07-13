@@ -6,10 +6,11 @@ import ErrorPage from './views/404';
 import CodeDetails from './views/CodeDetails';
 import AppLoader from './cmps/AppLoader';
 import Login from './views/Login';
-import  {userService} from './services/user.service';
 // services
-import { itemService } from './services/item.service.local';
-import { socketService } from './services/socket.service';
+import  {userService} from './services/user.service';
+import { showSuccessMsg } from './services/event-bus.service';
+import { itemService } from './services/item.service.js';
+import { socketService ,ON_MENTOR_LOGIN} from './services/socket.service';
 
 
 function RouterView() {
@@ -45,8 +46,13 @@ function useRouteGuard(route) {
           route = 'login';
      }
      if (user){
-          console.log('user',user);
+          // console.log('user',user);
           socketService.setup()
+          socketService.on(ON_MENTOR_LOGIN, (msg) => {
+               console.log('msg:', msg);
+               showSuccessMsg(msg)
+          })
+
      }
 
 
@@ -60,10 +66,13 @@ function useRouteGuard(route) {
           let cmp = <ErrorPage />;
           switch (route) {
                case 'home':
-                    cmp = <AppHome />;
+
+                    cmp = <AppHome user={user}/>;
                     break;
                case 'lobby':
+                    
                     const codes = await itemService.query();
+                    console.log(codes);
                     cmp = <CodeIdx codes={codes} />;
                     break;
                case 'code-details':

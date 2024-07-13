@@ -30,13 +30,8 @@ function getLoggedInUser() {
 }
 
 async function save(user) {
-    // const err = new Error();
-    // console.trace()
-
-    // user = JSON.parse(JSON.stringify(user))
-
-    const method = (user._id) ? 'put' : 'post';
-    const updatedUser = await storageService[method](STORAGE_KEY, user);
+     const method = (user._id) ? 'put' : 'post';
+    const updatedUser = await httpService[method](`user/${method==='post'&& user._id}`, user);
 
     if (updatedUser) {
         console.log('updatedUser', updatedUser);
@@ -55,10 +50,11 @@ function removeUser(userId) {
 
 
 
-async function login(loginType, credentials) {
+async function login(credentials) {
+    console.log('credentials',credentials);
     
     try {
-        const user=await httpService.post('auth/login', {username:'user1', password:'1'})
+        const user=await httpService.post('auth/login', {...credentials})
         console.log('user',user);
         return _saveLoggedUser(user)
     

@@ -1,13 +1,14 @@
 import io from 'socket.io-client'
 import { userService } from './user.service'
 
-export const SOCKET_EVENT_ADD_MSG = 'chat-add-msg'
-export const SOCKET_EMIT_SEND_MSG = 'chat-send-msg'
+export const ON_UPDATE_CODE = 'update-code'
 export const SOCKET_EMIT_SET_TOPIC = 'chat-set-topic'
-export const SOCKET_EMIT_USER_WATCH = 'user-watch'
-export const SOCKET_EVENT_USER_UPDATED = 'user-updated'
-export const SOCKET_EVENT_REVIEW_ADDED = 'review-added'
-export const SOCKET_EVENT_REVIEW_ABOUT_YOU = 'review-about-you'
+export const EMIT_USER_WATCH = 'user-watch'
+export const ON_REVIEW_ABOUT_YOU = 'code-review'
+export const EMIT_JOIN_ROOM = 'join-room'
+export const EMIT_LEAVE_ROOM = 'leave-room'
+export const ON_USERS_COUNT = 'users-count'
+export const ON_MENTOR_LOGIN = 'mentor-socket'
 
 const SOCKET_EMIT_LOGIN = 'set-user-socket'
 const SOCKET_EMIT_LOGOUT = 'unset-user-socket'
@@ -28,7 +29,7 @@ function createSocketService() {
       socket = io(baseUrl)
       setTimeout(() => {
         const user = userService.getLoggedInUser()
-        if (user) this.login(user._id)
+        if (user) this.login(user)
       }, 500)
     },
     on(eventName, cb) {
@@ -43,8 +44,8 @@ function createSocketService() {
       data = JSON.parse(JSON.stringify(data))
       socket.emit(eventName, data)
     },
-    login(userId) {
-      socket.emit(SOCKET_EMIT_LOGIN, userId)
+    login(user) {
+      socket.emit(SOCKET_EMIT_LOGIN, JSON.stringify(user))
     },
     logout() {
       socket.emit(SOCKET_EMIT_LOGOUT)

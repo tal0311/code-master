@@ -5,7 +5,8 @@ import { utilService } from "./util.service.js";
 
 
 import codes from "./../../data/code.json";
-console.log(codes);
+
+// console.log(codes);
 const STORAGE_KEY = "item_DB";
 
 
@@ -15,7 +16,7 @@ export const itemService = {
   save,
   remove,
   getEmptyItem,
-  
+
 
 };
 window.itemService = itemService;
@@ -23,48 +24,47 @@ window.itemService = itemService;
 // loadItems();
 
 async function query(filterBy = {}) {
-  
-try {
+  console.log('getting items');
+
+  try {
     let items = await httpService.get('code', filterBy);
-     return items;
-} catch (error) {
-    console.log('error in item service', error);
-    // return codes;
+    console.log('items', items);
+    return items;
+  } catch (error) {
+    console.error('error in item service', error);
   
-}
- 
+
+  }
+
 }
 
 
 
 function getById(itemId) {
-  return storageService.get(STORAGE_KEY, itemId);
-  // return httpService.get(`item/${itemId}`)
+
+  return httpService.get(`code/${itemId}`)
 }
 
 async function remove(itemId) {
-  await storageService.remove(STORAGE_KEY, itemId);
-  // return httpService.delete(`item/${itemId}`)
+
+  return httpService.delete(`code/${itemId}`)
 }
 async function save(item) {
   var savedItem;
   if (item._id) {
-    savedItem = await storageService.put(STORAGE_KEY, item);
-    // savedItem = await httpService.put(`item/${item._id}`, item)
+
+    savedItem = await httpService.put(`item/${item._id}`, item)
 
   }
   return savedItem;
 }
 
-function getEmptyItem(name) {
+function getEmptyItem(code, language, title) {
   return {
-    id: "",
-    name,
-    icon: "",
-    group: "",
-    readMoreURL: "https://example.com/rice-info",
-    color: "",
-    isSelected: false,
+    _id: utilService.makeId(),
+    code,
+    language,
+    title: title || "Untitled", 
   };
 }
 
